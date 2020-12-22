@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const cors = require("cors");
 
 //Database
 mongoose
@@ -13,6 +14,7 @@ mongoose
   .catch((err) => console.log(err));
 
 //Middleware
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -20,4 +22,4 @@ app.use(express.json());
 require("./routes/routes")(app);
 
 //Start Server
-app.listen(3000, () => "Server running on port 3000");
+app.listen(8080, () => "Server running on port 8080");
