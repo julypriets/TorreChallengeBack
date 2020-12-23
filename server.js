@@ -26,4 +26,4 @@ app.use(express.static(__dirname + "/public"));
 require("./routes/routes")(app);
 
 //Start Server
-app.listen(8080, () => "Server running on port 8080");
+app.listen(process.env.PORT || 8080, () => "Server running on port 8080");
