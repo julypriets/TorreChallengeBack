@@ -2,9 +2,10 @@ const CourseModel = require("../models/courseModel");
 
 module.exports = {
   createCourse: (req, res) => {
-    console.log("[CourseController.js - re.body: ", req.body);
+    console.log("ME HA SHEGAO ESTO: ", req.file);
     let course = new CourseModel({
       ...req.body,
+      thumbnail: req.file.path,
     });
     course
       .save()
@@ -30,11 +31,23 @@ module.exports = {
   },
 
   getCourse: (req, res) => {
-    CourseModel.find()
+    CourseModel.findById(req._id)
       .then((course) => {
         if (!course) res.json({ success: false, result: "No courses found" });
 
-        res.json({ sucess: true, result: result });
+        res.json({ sucess: true, result: course });
+      })
+      .catch((err) => {
+        res.json({ success: false, result: err });
+      });
+  },
+
+  getCourses: (req, res) => {
+    CourseModel.find({})
+      .then((courses) => {
+        if (!courses) res.json({ success: false, result: "No courses found" });
+
+        res.json({ sucess: true, result: courses });
       })
       .catch((err) => {
         res.json({ success: false, result: err });

@@ -5,6 +5,7 @@ const CourseSchema = new Schema({
   name: { type: String, required: true },
   startDate: { type: Date, required: false },
   endDate: Date,
+  current: { type: Boolean, required: true },
   issuedBy: { type: String, required: true },
   skills: [{ type: String, required: true }],
   sectors: [{ type: String, required: true }],
@@ -12,7 +13,11 @@ const CourseSchema = new Schema({
   certificateID: String,
   certificateExpirationDate: Date,
   certificateURL: String,
-  imageURL: String,
+  thumbnail: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/julypriets/image/upload/v1608679028/planet_v2m4gu.png",
+  },
 });
 
 module.exports = mongoose.model("courses", CourseSchema);
