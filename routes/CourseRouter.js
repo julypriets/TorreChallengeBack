@@ -8,6 +8,7 @@ router.post(
   multer.single("imageFile"),
   CourseController.createCourse
 );
+
 router.post("/updateCourse", CourseController.updateCourse);
 router.get("/getCourses", CourseController.getCourses);
 router.get("/getCourse", CourseController.getCourse);
