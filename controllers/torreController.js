@@ -16,4 +16,18 @@ module.exports = {
       res.json({ success: false, result: "Username does not exist in Torre" });
     }
   },
+
+  // getSuggestedJobs: async (req, res) => {
+  //   try {
+  //     const search = {
+  //       ...req.body
+  //     }
+
+  //     if(skills) {
+
+  //     }
+  //   } catch {
+
+  //   }
+  // }
 };
