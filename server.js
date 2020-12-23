@@ -1,8 +1,9 @@
 require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const app = express();
-const cors = require("cors");
+const express = require("express"),
+  mongoose = require("mongoose"),
+  app = express(),
+  cors = require("cors"),
+  bodyParser = require("body-parser");
 
 //Database
 mongoose
@@ -11,12 +12,13 @@ mongoose
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connected to database"))
-  .catch((err) => console.log("UHHHHH ", err));
+  .catch((err) => console.log(err));
 
 //Middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(bodyParser.json());
 
 //Routes
 require("./routes/routes")(app);

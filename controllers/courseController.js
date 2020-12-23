@@ -2,7 +2,6 @@ const CourseModel = require("../models/courseModel");
 
 module.exports = {
   createCourse: (req, res) => {
-    console.log("ME HA SHEGAO ESTO: ", req.file);
     let course = new CourseModel({
       ...req.body,
       thumbnail: req.file.path,
