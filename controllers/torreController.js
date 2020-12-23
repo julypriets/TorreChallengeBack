@@ -1,21 +1,19 @@
 const axios = require("axios");
 
 module.exports = {
-  verifyUsername: (req, res) => {
-    console.log("[TorreController.js] req: ", req.body);
-    console.log("[TorreController.js user: ", user);
-    // Make a request for a user with a given ID
-    axios
-      .get(`https://bio.torre.co/api/bios/${user}`)
-      .then(function (response) {
-        res.json({ success: true, result: response });
-      })
-      .catch(function (error) {
-        console.log(error);
-        res.json({
-          success: false,
-          result: "Username does not exist in Torre",
-        });
-      });
+  verifyUsername: async (req, res) => {
+    try {
+      const param = req.query.username;
+      console.log("USERNAME", param);
+
+      // Make a request for a user with a given ID
+      const user = await axios.get(`https://bio.torre.co/api/bios/${param}`);
+      console.log("THIS IS THE USER", user.data);
+
+      res.json(user.data);
+    } catch (err) {
+      console.error(err);
+      res.json({ success: false, result: "Username does not exist in Torre" });
+    }
   },
 };

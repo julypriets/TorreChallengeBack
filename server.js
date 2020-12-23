@@ -3,6 +3,7 @@ const express = require("express"),
   mongoose = require("mongoose"),
   app = express(),
   cors = require("cors"),
+  path = require("path"),
   bodyParser = require("body-parser");
 
 //Database
@@ -16,7 +17,7 @@ mongoose
 
 //Middleware
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(bodyParser.json());
 

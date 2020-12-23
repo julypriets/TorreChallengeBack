@@ -2,6 +2,6 @@ const express = require("express"),
   router = express.Router(),
   TorreController = require("../controllers/torreController");
 
-router.post("/verifyUsername", TorreController.verifyUsername);
+router.get("/verify-username", TorreController.verifyUsername);
 
 module.exports = router;
